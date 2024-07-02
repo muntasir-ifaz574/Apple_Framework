@@ -11,12 +11,12 @@ struct FrameworkGridView: View {
     
     @StateObject var viewModel = FrameworkGridViewMode()
     
-    let columns: [GridItem] = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
+    
     
     var body: some View {
         NavigationView{
             ScrollView{
-                LazyVGrid(columns: columns){
+                LazyVGrid(columns: viewModel.columns){
                     ForEach(MockData.frameworks){ framework in
                         FrameworkTitelView(framwork: framework)
                             .onTapGesture {
@@ -46,20 +46,3 @@ struct FrameworkGridView: View {
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
 
-struct FrameworkTitelView: View {
-    let framwork: Framework
-    
-    var body: some View {
-        VStack{
-            Image(framwork.imageName)
-                .resizable()
-                .frame(width: 90, height: 90)
-            Text(framwork.name)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .scaledToFit()
-                .minimumScaleFactor(0.6)
-        }
-        .padding()
-    }
-}
