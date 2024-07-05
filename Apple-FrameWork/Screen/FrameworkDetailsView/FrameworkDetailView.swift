@@ -9,15 +9,11 @@ import SwiftUI
 
 struct FrameworkDetailView: View {
     var framework: Framework
-    @Binding var isShowingDetailsView: Bool
+   
     @State private var isSafariViewShoging = false
     
     var body: some View {
         VStack{
-            
-            XDismissButton(isShowingDetailsView: $isShowingDetailsView)
-            
-            Spacer()
             FrameworkTitelView(framwork: framework)
             Text(framework.description)
                 .font(.body)
@@ -38,6 +34,6 @@ struct FrameworkDetailView: View {
 }
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailsView: .constant(false))
+    FrameworkDetailView(framework: MockData.sampleFramework)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
